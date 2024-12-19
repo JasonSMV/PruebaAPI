@@ -8,9 +8,9 @@ namespace API.Controllers
     [ApiController]
     public class ContieneNombreController : ControllerBase
     {
-        private readonly IContieneNombreService _contieneNombreService;
+        private readonly IContieneNombreRepository _contieneNombreService;
 
-        public ContieneNombreController(IContieneNombreService service)
+        public ContieneNombreController(IContieneNombreRepository service)
         {
             _contieneNombreService = service;
         }

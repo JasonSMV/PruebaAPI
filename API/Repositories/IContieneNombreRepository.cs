@@ -2,7 +2,7 @@
 
 namespace API.Repositories
 {
-    public interface IContieneNombreService
+    public interface IContieneNombreRepository
     {
         bool ContieneNombre(string[] info, string nombre);
 

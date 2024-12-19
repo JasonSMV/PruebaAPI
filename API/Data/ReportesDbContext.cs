@@ -10,5 +10,13 @@ namespace API.Data
         }
 
         public DbSet<ReporteValidacion> ReporteValidaciones { get; set; }
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+
+        }
     }
 }

@@ -7,9 +7,9 @@ namespace API.Controllers
     [ApiController]
     public class ReporteController : ControllerBase
     {
-        private readonly IContieneNombreService _service;
+        private readonly IContieneNombreRepository _service;
 
-        public ReporteController(IContieneNombreService service)
+        public ReporteController(IContieneNombreRepository service)
         {
             _service = service;
         }

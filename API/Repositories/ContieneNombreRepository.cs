@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Repositories
 {
-    public class ContieneNombreService : IContieneNombreService
+    public class ContieneNombreRepository : IContieneNombreRepository
     {
         private readonly ReportesDbContext _db;
 
-        public ContieneNombreService(ReportesDbContext db)
+        public ContieneNombreRepository(ReportesDbContext db)
         {
             this._db = db;
         }
@@ -90,11 +90,15 @@ namespace API.Repositories
             int totalReportesConRespuestaPositiva = await _db.ReporteValidaciones.CountAsync(v => v.Resultado);
             int totalReportesConRepuestaNegativa = await _db.ReporteValidaciones.CountAsync(v => !v.Resultado);
 
+            int total = totalReportesConRespuestaPositiva + totalReportesConRepuestaNegativa;
+
+            double relacion = total != 0 ? totalReportesConRespuestaPositiva / (double)total : 0;
+
             return new ReporteResponse
             {
                 CuentaContieneNombre = totalReportesConRespuestaPositiva,
                 CuentaNoContieneNombre = totalReportesConRepuestaNegativa,
-                Relacion = totalReportesConRespuestaPositiva / (double)(totalReportesConRespuestaPositiva + totalReportesConRepuestaNegativa)
+                Relacion = relacion
             };
         }
 
